@@ -29,11 +29,9 @@ class CSVTimeSeriesFile():
                     elements = linea.split(",")
                     verifica = True
                     verifica_2 = True
-                    if elements[0]!= 'date' and elements[1].isdigit() and '-' in elements[0]:
+                    if elements[0]!= 'date' and elements[1].isdigit() and '-' in elements[0] and int(elements[1])>0:
                         anno_corrente = elements[0].split("-")[0]
                         mese_corrente = elements[0].split("-")[1]
-                        int(anno_corrente)
-                        int(mese_corrente)
                         for item in list:
                             if elements[0] == item[0]:
                                 verifica = False
@@ -94,8 +92,3 @@ def find_min_max(time_series):
             interno = {"min": min, "max":max}
             esterno[anno] = interno
     return esterno
-
-my_file = 'data.csv'
-file = CSVTimeSeriesFile(my_file)
-time_series = file.get_data()
-print(find_min_max(time_series))

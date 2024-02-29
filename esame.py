@@ -18,7 +18,7 @@ class CSVTimeSeriesFile():
                 raise ExamException('Il file è vuoto')
 
         except Exception as e:
-            raise ExamException('Errore in apertura del file:') from e
+            raise ExamException(f'Errore in apertura del file:{e}') from e
         else: 
             list = []
             my_file = open(self.name, 'r')
@@ -71,7 +71,7 @@ def find_min_max(time_series):
             val_max = element[1]
             min.append(mese)
             max.append(mese)
-            interno = {"min": min, "max":max}
+            interno = {"min": min, "max": max}
             esterno[anno] = interno
         else:
             if element[1]>val_max:
@@ -89,6 +89,6 @@ def find_min_max(time_series):
             else:
                 if element[1] == val_min:
                     min.append(mese)
-            interno = {"min": min, "max":max}
+            interno = {"min": min, "max": max}
             esterno[anno] = interno
     return esterno
